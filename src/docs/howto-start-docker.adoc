@@ -1,0 +1,25 @@
+= HOWTO: start service as docker container
+
+== Cleaning previously started container
+
+[source,shell]
+----
+docker ps -a
+docker kill vuzoll_datasets_manager; docker rm vuzoll_datasets_manager
+----
+
+== Configuration parameters
+
+Following environment variable are available for global service configuration:
+
+ROOT_LOG_LEVEL - logging level for third-party libraries (default is INFO)
+
+SERVICE_LOG_LEVEL - logging level for service code (default is INFO)
+
+== Start container
+
+[source,shell]
+----
+docker pull vuzoll/vuzoll-datasets-manager:?TAG
+docker run -dit --name vuzoll_datasets_manager -v /logs:/logs -p 28004:8080 vuzoll/vuzoll-datasets-manager:?TAG
+----
