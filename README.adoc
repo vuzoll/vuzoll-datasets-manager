@@ -16,3 +16,5 @@ https://hub.docker.com/r/vuzoll/vuzoll-datasets-manager/
 link:src/docs/howto-start-docker.adoc[HOWTO: start service as docker container, window="_blank"]
 
 link:src/docs/howto-run-service.adoc[HOWTO: run service, window="_blank"]
+
+link:src/docs/mongodb-setup.adoc[MongoDB setup]
