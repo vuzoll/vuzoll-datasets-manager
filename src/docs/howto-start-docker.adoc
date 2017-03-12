@@ -12,6 +12,18 @@ docker kill vuzoll_datasets_manager; docker rm vuzoll_datasets_manager
 
 Following environment variable are available for global service configuration:
 
+MONGO_DATABASE_NAME - mongodb database name to use (default is vuzoll)
+
+MONGO_AUTH_DATABASE_NAME - mongodb database name used for authentication (default is admin)
+
+MONGO_HOST - host of mongodb instance (default is vuzoll_mongo)
+
+MONGO_PORT - port of mongodb instance (default is 27017)
+
+MONGO_USERNAME - username for authentication to mongodb (default is vuzollDatasetsService)
+
+MONGO_PASSWORD - password for authentication to mongodb
+
 ROOT_LOG_LEVEL - logging level for third-party libraries (default is INFO)
 
 SERVICE_LOG_LEVEL - logging level for service code (default is INFO)
@@ -21,5 +33,5 @@ SERVICE_LOG_LEVEL - logging level for service code (default is INFO)
 [source,shell]
 ----
 docker pull vuzoll/vuzoll-datasets-manager:?TAG
-docker run -dit --name vuzoll_datasets_manager -v /logs:/logs -p 28004:8080 vuzoll/vuzoll-datasets-manager:?TAG
+docker run -dit --name vuzoll_datasets_manager --link vuzoll_mongo -e MONGO_PASSWORD=?MONGODB_PASSWORD -v /logs:/logs -p 28004:8080 vuzoll/vuzoll-datasets-manager:?TAG
 ----
