@@ -19,8 +19,15 @@ class DatasetDataService {
     void deleteData(Dataset dataset) {
         log.warn "Deleting data from dataset [$dataset.name]..."
 
-        mongoTemplate.remove(query(where('datasetName').is(dataset.name)), dataset.parameters.documentName.toString())
+        if (dataset.type == 'mongo-document') {
+            deleteMongoDocument(dataset)
+        } else {
+            log.warn "Uknown dataset [$dataset.name] type $dataset.type"
+        }
+    }
 
+    void deleteMongoDocument(Dataset dataset) {
+        mongoTemplate.remove(query(where('datasetName').is(dataset.name)), dataset.parameters.documentName.toString())
         log.info "Succesfully deleted data from dataset [$dataset.name]..."
     }
 }

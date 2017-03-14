@@ -38,7 +38,7 @@ class DatasetMetadataController {
     @DeleteMapping(path = '/dataset/{id}')
     @ResponseBody Dataset deleteDatasetById(@PathVariable String id, @RequestParam('deleteData') Boolean deleteData) {
         log.info "Received request to delete existing dataset with id=${id}"
-        
+
         if (deleteData) {
             log.info "Received request to delete data associated with dataset with id=${id}"
             Dataset dataset = datasetRepository.findOne(id)
