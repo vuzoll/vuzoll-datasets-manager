@@ -2,16 +2,20 @@
 
 == Endpoints
 
-POST to http://<host>:<port>/dataset - register new dataset
+POST to http://{host}:{port}/dataset - register new dataset
 
-GET to http://<host>:<port>/dataset/list - retrieve list of all datasets
+GET to http://{host}:{port}/dataset - retrieve list of all datasets
 
-GET to http://<host>:<port>/dataset/{id} - find dataset by id
+GET to http://{host}:{port}/dataset/{id} - find dataset by id
 
-GET to http://<host>:<port>/dataset/search?name={name} - find dataset by name
+GET to http://{host}:{port}/dataset/search?name={name} - find dataset by name
+
+
+DELETE to http://{host}:{port}/dataset/{id}?deleteData=true|false - delete dataset by id
+
+
+GET to http://{host}:{port}/dataset/{id}/exploration - exploration report for dataset with id={id}
 
 == Service locations
 
-Development instance - 138.68.99.206:28004
-
-Production instance - 139.59.141.72:28004
+Production instance - http://46.101.123.160:28004
