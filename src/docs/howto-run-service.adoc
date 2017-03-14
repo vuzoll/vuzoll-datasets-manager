@@ -11,6 +11,9 @@ GET to http://{host}:{port}/dataset/{id} - find dataset by id
 GET to http://{host}:{port}/dataset/search?name={name} - find dataset by name
 
 
+DELETE to http://{host}:{port}/dataset/{id}?deleteData=true|false - delete dataset by id
+
+
 GET to http://{host}:{port}/dataset/{id}/exploration - exploration report for dataset with id={id}
 
 == Service locations
