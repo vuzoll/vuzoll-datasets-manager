@@ -42,9 +42,16 @@ class DatasetExplorationService {
         int documentsCount = mongoTemplate.count(query(where('datasetName').is(dataset.name)), dataset.parameters.documentName.toString())
         exploration += "Documents count: ".padRight(padSize) + documentsCount + '\n'
 
+        Class documentClass
+        try {
+            documentClass = Class.forName("com.github.vuzoll.datasets.documents.${dataset.parameters.documentClass}")
+        } catch(e) {
+            documentClass = Object
+        }
+
         int randomIndex = RandomUtils.nextInt(0, documentsCount)
         String randomDocument = mongoTemplate
-                .stream(query(where('datasetName').is(dataset.name)), Object, dataset.parameters.documentName.toString())
+                .stream(query(where('datasetName').is(dataset.name)), documentClass, dataset.parameters.documentName.toString())
                 .drop(randomIndex)
                 .take(1)
                 .collect({ JsonOutput.toJson(it) })
