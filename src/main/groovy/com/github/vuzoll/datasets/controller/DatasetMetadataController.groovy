@@ -5,6 +5,7 @@ import com.github.vuzoll.datasets.repository.DatasetRepository
 import com.github.vuzoll.datasets.service.DatasetMetadataService
 import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -25,9 +26,16 @@ class DatasetMetadataController {
 
     @PostMapping(path = '/dataset')
     @ResponseBody Dataset registerNewDataset(@RequestBody Dataset dataset) {
-        log.info "Received request to register new dataset: $dataset"
+        log.info "Received request to register new dataset: ${dataset}"
 
         datasetService.registerNewDataset dataset
+    }
+
+    @DeleteMapping(path = '/dataset/{id}')
+    @ResponseBody Dataset deleteDatasetById(@PathVariable String id) {
+        log.info "Received request to delete existing dataset with id=${id}"
+
+        datasetRepository.delete(id)
     }
 
     @GetMapping(path = '/dataset')

@@ -38,10 +38,10 @@ class DatasetExplorationService {
             exploration += "${name}: ".padRight(padSize) + value + '\n'
         }
 
-        int documentsCount = mongoTemplate.count(query(where('datasetName').is(dataset.name)), dataset.parameters.documentName)
+        int documentsCount = mongoTemplate.count(query(where('datasetName').is(dataset.name)), dataset.parameters.documentName.toString())
         exploration += "Documents count: ".padRight(padSize) + documentsCount + '\n'
 
-        String randomDocument = JsonOutput.prettyPrint(JsonOutput.toJson(mongoTemplate.find(query(where('datasetName').is(dataset.name)), dataset.parameters.documentName)))
+        String randomDocument = JsonOutput.prettyPrint(JsonOutput.toJson(mongoTemplate.find(query(where('datasetName').is(dataset.name)), dataset.parameters.documentName.toString())))
         exploration += "Random document:\n" + randomDocument + '\n'
 
         return exploration
