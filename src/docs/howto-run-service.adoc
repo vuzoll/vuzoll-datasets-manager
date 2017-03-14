@@ -4,11 +4,14 @@
 
 POST to http://{host}:{port}/dataset - register new dataset
 
-GET to http://{host}:{port}/dataset/list - retrieve list of all datasets
+GET to http://{host}:{port}/dataset - retrieve list of all datasets
 
 GET to http://{host}:{port}/dataset/{id} - find dataset by id
 
 GET to http://{host}:{port}/dataset/search?name={name} - find dataset by name
+
+
+GET to http://{host}:{port}/dataset/{id}/exploration - exploration report for dataset with id={id}
 
 == Service locations
 

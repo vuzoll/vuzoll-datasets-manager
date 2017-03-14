@@ -29,7 +29,7 @@ class DatasetMetadataController {
         datasetService.registerNewDataset dataset
     }
 
-    @GetMapping(path = '/dataset/list')
+    @GetMapping(path = '/dataset')
     @ResponseBody Collection<Dataset> listAllDatasets() {
         datasetRepository.findAll()
     }

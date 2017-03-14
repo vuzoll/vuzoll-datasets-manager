@@ -13,5 +13,7 @@ class Dataset {
 
     String name
 
+    String type
+
     Map parameters
 }
